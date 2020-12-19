@@ -1,4 +1,4 @@
-# ai
+# Kedro tutorial using titanic data
 
 ## Overview
 
