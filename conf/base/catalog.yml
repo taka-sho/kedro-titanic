@@ -1,0 +1,84 @@
+# Here you can define all your data sets by using simple YAML syntax.
+#
+# Documentation for this file format can be found in "The Data Catalog"
+# Link: https://kedro.readthedocs.io/en/stable/05_data/01_data_catalog.html
+
+message:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/message.csv
+  layer: raw
+
+timestamp:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/timestamp.csv
+  layer: raw
+
+tl_report:
+  type: text.TextDataSet
+  filepath: data/08_reporting/tl_report.txt
+  layer: reporting
+
+master_echo:
+  type: pandas.CSVDataSet
+  # type: MemoryDataSet
+  filepath: data/03_primary/master_echo.csv
+  layer: primary
+  versioned: True
+
+master_report:
+  type: text.TextDataSet
+  filepath: data/08_reporting/master_report.txt
+  layer: reporting
+  versioned: True
+
+######
+
+complete:
+  type: pandas.CSVDataSet
+  filepath: data/01_raw/complete.csv
+  layer: raw
+
+pre_data_validation:
+  type: text.TextDataSet
+  filepath: data/08_reporting/pre_data_validation.html
+  layer: reporting
+
+master_titanic:
+  type: pandas.CSVDataSet
+  filepath: data/03_primary/master_titanic.csv
+  layer: primary
+
+post_data_validation:
+  type: text.TextDataSet
+  filepath: data/08_reporting/post_data_validation.html
+  layer: reporting
+
+x_train:
+  type: pandas.CSVDataSet
+  filepath: data/07_model_input/x_train.csv
+  layer: model_input
+
+x_test:
+  type: pandas.CSVDataSet
+  filepath: data/07_model_input/x_test.csv
+  layer: model_input
+
+y_train:
+  type: pandas.CSVDataSet
+  filepath: data/07_model_input/y_train.csv
+  layer: model_input
+
+y_test:
+  type: pandas.CSVDataSet
+  filepath: data/07_model_input/y_test.csv
+  layer: model_input
+
+logistic_model:
+  type: pickle.PickleDataSet
+  filepath: data/06_models/logistic_model.pkl
+  layer: model
+
+model_analysis_report:
+  type: text.TextDataSet
+  filepath: data/08_reporting/model_analysis_report.txt
+  layer: reporting

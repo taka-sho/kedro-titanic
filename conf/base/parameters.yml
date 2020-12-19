@@ -1,0 +1,3 @@
+testsize: 0.25
+bucket_name: "kaleidograph"
+file_path: "sharing/titanic/complete.csv"
