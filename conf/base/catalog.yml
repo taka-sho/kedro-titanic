@@ -39,8 +39,8 @@ complete:
   layer: raw
 
 pre_data_validation:
-  type: text.TextDataSet
-  filepath: data/08_reporting/pre_data_validation.html
+  type: pickle.PickleDataSet
+  filepath: data/08_reporting/pre_data_validation.pkl
   layer: reporting
 
 master_titanic:
@@ -49,8 +49,8 @@ master_titanic:
   layer: primary
 
 post_data_validation:
-  type: text.TextDataSet
-  filepath: data/08_reporting/post_data_validation.html
+  type: pickle.PickleDataSet
+  filepath: data/08_reporting/post_data_validation.pkl
   layer: reporting
 
 x_train:

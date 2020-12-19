@@ -1,3 +1,5 @@
 testsize: 0.25
 bucket_name: "kaleidograph"
 file_path: "sharing/titanic/complete.csv"
+pre_report_path: "data/08_reporting/pre_data_validation.pkl"
+post_report_path: "data/08_reporting/post_data_validation.pkl"

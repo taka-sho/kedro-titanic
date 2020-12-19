@@ -7,14 +7,14 @@ def create_pipeline(**args) -> Pipeline:
         node(
             name = "create HTML pre-report",
             func = create_report_as_HTML,
-            inputs = "complete",
-            outputs = "pre_data_validation",
+            inputs = ["complete", "params:pre_report_path"],
+            outputs = None,
         ),
         node(
             name = "create HTML post-report",
             func = create_report_as_HTML,
-            inputs = "master_titanic",
-            outputs = "post_data_validation",
+            inputs = ["complete", "params:post_report_path"],
+            outputs = None,
         ),
         node(
             name = "preprocess dataframe",
@@ -25,7 +25,7 @@ def create_pipeline(**args) -> Pipeline:
         node(
             name = "split dataframe for train and validation",
             func = split_df,
-            inputs = ["master_titanic", "parameters"],
+            inputs = ["master_titanic", "params:testsize"],
             outputs = ["x_train", "x_test", "y_train", "y_test"]
         ),
         node(
@@ -47,7 +47,7 @@ def create_fetch_pipeline(**args) -> Pipeline:
         node(
             name = "fetch titanic dataframe",
             func = fetch_titanic_csv,
-            inputs  = ["parameters"],
+            inputs  = ["params:bucket_name", "params:file_path"],
             outputs = None,
         ),
     ])
