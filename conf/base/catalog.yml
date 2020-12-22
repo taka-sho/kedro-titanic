@@ -55,22 +55,22 @@ post_data_validation:
 
 x_train:
   type: pandas.CSVDataSet
-  filepath: data/07_model_input/x_train.csv
+  filepath: data/05_model_input/x_train.csv
   layer: model_input
 
 x_test:
   type: pandas.CSVDataSet
-  filepath: data/07_model_input/x_test.csv
+  filepath: data/05_model_input/x_test.csv
   layer: model_input
 
 y_train:
   type: pandas.CSVDataSet
-  filepath: data/07_model_input/y_train.csv
+  filepath: data/05_model_input/y_train.csv
   layer: model_input
 
 y_test:
   type: pandas.CSVDataSet
-  filepath: data/07_model_input/y_test.csv
+  filepath: data/05_model_input/y_test.csv
   layer: model_input
 
 logistic_model:
