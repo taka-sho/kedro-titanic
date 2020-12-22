@@ -1,6 +1,5 @@
 import math, glob, os, io
 import pandas as pd
-from pandas_profiling import ProfileReport
 from sklearn.model_selection import train_test_split
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import accuracy_score, f1_score, roc_curve, auc
@@ -12,10 +11,11 @@ def clear_data(clear_extensions):
         r = glob.glob("data/0*/*." + ext)
         for v in r:
             os.remove(v)
+
 def fetch_titanic_csv(bucket_name, file_path) -> pd.DataFrame:
     s3 = boto3.client("s3")
-    df = s3.download_file(bucket_name, file_path, "data/01_raw/complete.csv")
-    return df
+    obj = s3.get_object(Bucket = bucket_name, Key = file_path)
+    return pd.read_csv(io.BytesIO(obj['Body'].read()))
 
 def create_report_as_HTML(df: pd.DataFrame, path) -> str:
     stats = tfdv.generate_statistics_from_dataframe(df)

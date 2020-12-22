@@ -5,6 +5,12 @@ from ai.pipelines.logistic_regression.node import create_report_as_HTML, preproc
 def create_pipeline(**args) -> Pipeline:
     return Pipeline([
         node(
+            name = "fetch titanic dataframe",
+            func = fetch_titanic_csv,
+            inputs  = ["params:bucket_name", "params:file_path"],
+            outputs = "complete",
+        ),
+        node(
             name = "create HTML pre-report",
             func = create_report_as_HTML,
             inputs = ["complete", "params:pre_report_path"],
@@ -48,6 +54,10 @@ def create_fetch_pipeline(**args) -> Pipeline:
             name = "fetch titanic dataframe",
             func = fetch_titanic_csv,
             inputs  = ["params:bucket_name", "params:file_path"],
+            outputs = "complete",
+        ),
+    ])
+
 def clear_data_pipeline(**args) -> Pipeline:
     return Pipeline([
         node(
@@ -58,4 +68,12 @@ def clear_data_pipeline(**args) -> Pipeline:
         ),
     ])
 
+def create_fetch_csv_pipeline(**args) -> Pipeline:
+    return Pipeline([
+        node(
+            name = "fetch titanic data frame",
+            func = fetch_titanic_csv,
+            inputs = ["params:bucket_name", "params:file_path"],
+            outputs = None,
+        ),
     ])

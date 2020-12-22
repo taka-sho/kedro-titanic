@@ -50,7 +50,7 @@ class ProjectHooks:
         """
         return {
             "__default__": echo.create_pipeline(),
-            "logistic": titanic.create_fetch_pipeline() + titanic.create_pipeline(),
+            "logistic": titanic.create_pipeline(),
             "clear": titanic.clear_data_pipeline(),
         }
 
