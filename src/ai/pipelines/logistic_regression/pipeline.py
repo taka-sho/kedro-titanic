@@ -1,6 +1,6 @@
 from kedro.pipeline import Pipeline, node
 
-from ai.pipelines.logistic_regression.node import create_report_as_HTML, preprocess, split_df, train_with_logistic, create_report_model_analysis, fetch_titanic_csv
+from ai.pipelines.logistic_regression.node import create_report_as_HTML, preprocess, split_df, train_with_logistic, create_report_model_analysis, fetch_titanic_csv, clear_data
 
 def create_pipeline(**args) -> Pipeline:
     return Pipeline([
@@ -48,6 +48,14 @@ def create_fetch_pipeline(**args) -> Pipeline:
             name = "fetch titanic dataframe",
             func = fetch_titanic_csv,
             inputs  = ["params:bucket_name", "params:file_path"],
+def clear_data_pipeline(**args) -> Pipeline:
+    return Pipeline([
+        node(
+            name = "clear data",
+            func = clear_data,
+            inputs = "params:clear_extensions",
             outputs = None,
         ),
+    ])
+
     ])
